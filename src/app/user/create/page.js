@@ -15,7 +15,7 @@ export default function UserCreate() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            boyd: JSON.stringify({userid, password, username, email})
+            body: JSON.stringify({userid, password, username, email})
         }
         fetch('http://localhost:3001/api/users', options)
             .then(res=>res.json())
