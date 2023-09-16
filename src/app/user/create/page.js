@@ -18,10 +18,13 @@ export default function UserCreate() {
             body: JSON.stringify({userid, password, username, email})
         }
         fetch('http://localhost:3001/api/users', options)
-            .then(res=>res.json())
-            .then(result=>{
-                console.log(result);
-            })
+            .then(res=> {
+                if(res.status === 200) {
+                    this.props.history.push('/');
+                } else if(res.status === 4000) {
+                    this.props.thistory.psuh('/user');
+                }
+            }).catch(err => console.log("err", err));
         }}>
             <input type="text" name="userid" placeholder="userid"></input>
             <input type="text" name="password" placeholder="password"></input>
